@@ -4,7 +4,7 @@ _SETTINGS_FILENAME = "Custom Builder.sublime-settings"
 
 class CustomBuilderPromptCommand(sublime_plugin.WindowCommand):
     def __init__(self, *args, **kwds):
-        self._commands = HistoryList("commands")
+        self._commands = None
         self._kwds = {}
         self._command_input_text = None
 
@@ -12,6 +12,7 @@ class CustomBuilderPromptCommand(sublime_plugin.WindowCommand):
 
     def run(self, **kwds):
         self._kwds = kwds
+        self._commands = HistoryList("commands")
         self._select_command()
 
     def _select_command(self):
@@ -53,9 +54,14 @@ class CustomBuilderPromptCommand(sublime_plugin.WindowCommand):
         self._build()
 
     def _build(self):
-        # print("Command: %s : %s" % (self._commands.get_latest()["command"], self._kwds))
         args = dict(self._kwds)
-        args["cmd"] = self._commands.get_latest()["command"]
+        command = self._commands.get_latest()["command"]
+
+        # Substitute all variables specified in args["cmd"]
+        for var in args.get("cmd", {}):
+            command = command.replace("$%s" % var, args["cmd"][var])
+
+        args["cmd"] = command
         self.window.run_command("exec", args)
 
 
