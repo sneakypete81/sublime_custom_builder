@@ -1,5 +1,5 @@
-sublimeText Custom Builder
-======================
+Sublime Text Custom Builder
+===========================
 
 Sublime Text plugin to launch customisable build commands. Easily select the command you need each time you build.
 
