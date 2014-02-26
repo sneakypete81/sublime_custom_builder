@@ -14,10 +14,10 @@ Usage
 Create a [build system file](http://docs.sublimetext.info/en/latest/file_processing/build_systems.html). 
 To run the custom builder for all Python files, use:
 ```
-   {
-       "target": "custom_builder_prompt",
-       "selector": "source.python",
-   }
+{
+   "target": "custom_builder_prompt",
+   "selector": "source.python",
+}
 ```
 
 Now open a file, bring up the Command Palette and type "Build". This should display the Custom Builder selector.
@@ -38,7 +38,19 @@ Now when you bring up the Custom Builder selector you will see the new command a
 Editing Commands
 ----------------
 
-You can edit your existing commands by opening the ```Custom Builder.sublime-settings``` file in your ```Packages/User``` folder
+You can edit your existing commands by opening the ```Custom Builder.sublime-settings``` file in your ```Packages/User``` folder:
+
+```
+{
+	"commands":
+	[
+		{
+			"command": "dir",
+			"title": "List files in the current directory"
+		}
+	]
+}
+```
 
 Build System Variables
 ----------------------
@@ -48,15 +60,15 @@ You can use any of the [Build System Features](http://docs.sublimetext.info/en/l
 Unfortunately Build System Variables (```$file_path```, ```$project```, etc.) are not expanded properly by default. To use these in your commands, pass them through in the "cmd" argument:
 
 ```
-   {
-       "target": "custom_builder_prompt",
-       "selector": "source.python",
-       "cmd": {"file": "$file"},
-       "shell": true,
-   }
+{
+   "target": "custom_builder_prompt",
+   "selector": "source.python",
+   "cmd": {"file": "$file"},
+   "shell": true,
+}
 ```
 
 You can then use the variable in your Custom Builder command:
 ```
-   dir $file
+dir $file
 ```
