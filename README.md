@@ -16,7 +16,7 @@ To run the custom builder for all Python files, use:
 ```
 {
    "target": "custom_builder_prompt",
-   "selector": "source.python",
+   "selector": "source.python"
 }
 ```
 
@@ -64,7 +64,7 @@ Unfortunately Build System Variables (```$file_path```, ```$project```, etc.) ar
    "target": "custom_builder_prompt",
    "selector": "source.python",
    "cmd": {"file": "$file"},
-   "shell": true,
+   "shell": true
 }
 ```
 
