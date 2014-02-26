@@ -22,6 +22,8 @@ To run the custom builder for all Python files, use:
 
 Now open a file, bring up the Command Palette and type "Build". This should display the Custom Builder selector.
 
+![Empty Custom Builder selector](https://github.com/sneakypete81/images/raw/master/sublime_custom_builder_screenshot_empty.png)
+
 Press Enter to create a new command, and type the command to run. 
 To create a command to list the curent directory, type ```dir```.
 
@@ -30,6 +32,8 @@ Now give it a name and press Enter.
 That's it, you should see the command output appear in the output pane.
 
 Now when you bring up the Custom Builder selector you will see the new command at the top of the list.
+
+![Custom Builder selector](https://github.com/sneakypete81/images/raw/master/sublime_custom_builder_screenshot_single.png)
 
 Editing Commands
 ----------------
@@ -41,7 +45,7 @@ Build System Variables
 
 You can use any of the [Build System Features](http://docs.sublimetext.info/en/latest/reference/build_systems.html) in your build system files.
 
-Unfortunately Build System Variables (```$file_path```, ```$project```, etc.) are not expanded properly. To use these in your commands, pass them through in the "cmd" argument:
+Unfortunately Build System Variables (```$file_path```, ```$project```, etc.) are not expanded properly by default. To use these in your commands, pass them through in the "cmd" argument:
 
 ```
    {
