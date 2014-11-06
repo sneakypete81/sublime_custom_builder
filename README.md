@@ -29,7 +29,7 @@ Now open a file, bring up the *Command Palette* and type ```Build```. This shoul
 ![Empty Custom Builder selector](https://github.com/sneakypete81/images/raw/master/sublime_custom_builder_screenshot_empty.png)
 
 Press Enter to create a new command, and type the command to run. 
-To create a command to list the curent directory, type ```dir```.
+To create a command to display your current network configuration, type ```c:\Windows\System32\ipconfig.exe```.
 
 Now give it a name and press Enter.
 
@@ -49,8 +49,8 @@ You can edit your existing commands by opening the *Custom Builder.sublime-setti
 	"commands":
 	[
 		{
-			"command": "dir",
-			"title": "List files in the current directory"
+			"command": "c:\Windows\System32\ipconfig.exe",
+			"title": "IPConfig"
 		}
 	]
 }
@@ -75,6 +75,6 @@ Unfortunately *Build System Variables* (```$file_path```, ```$project```, etc.) 
 You can then use the variable in your *Custom Builder* command:
 
 ```
-dir $file
+path\to\build_tool $file
 ```
 
