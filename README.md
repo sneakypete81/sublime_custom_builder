@@ -49,7 +49,7 @@ You can edit your existing commands by opening the *Custom Builder.sublime-setti
 	"commands":
 	[
 		{
-			"command": "c:\Windows\System32\ipconfig.exe",
+			"command": "c:\\Windows\\system32\\ipconfig.exe",
 			"title": "IPConfig"
 		}
 	]
