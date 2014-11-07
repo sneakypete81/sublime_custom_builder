@@ -1,4 +1,7 @@
-import sublime, sublime_plugin
+import os
+
+import sublime
+import sublime_plugin
 
 _SETTINGS_FILENAME = "Custom Builder.sublime-settings"
 
@@ -17,13 +20,17 @@ class CustomBuilderPromptCommand(sublime_plugin.WindowCommand):
 
     def _select_command(self):
         """Show the list of defined commands"""
-        self.window.show_quick_panel([[cmd["title"], cmd["command"]] for cmd in self._commands] + [["<New>", "Create a new command"]],
+        self.window.show_quick_panel([[cmd["title"], cmd["command"]] for cmd in self._commands] +
+                                     [["<New>", "Create a new command"], ["<Edit>", "Edit the command list"]],
                                      self._on_select_command_done)
 
     def _on_select_command_done(self, index):
         if index == len(self._commands):
             # Ask for a new build command
             self._input_command()
+        elif index == len(self._commands) + 1:
+            # Edit the command properties file
+            self.window.open_file(os.path.join(sublime.packages_path(), "User", _SETTINGS_FILENAME))
         elif index >= 0:
             # Select the build command and start the build
             self._commands.select(index)
